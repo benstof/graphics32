@@ -2,24 +2,24 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 448
-  ClientWidth = 688
+  ClientHeight = 416
+  ClientWidth = 639
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 105
-  TextHeight = 14
+  PixelsPerInch = 96
+  TextHeight = 13
   object image: TImage32
     Left = 0
-    Top = 0
-    Width = 688
-    Height = 448
-    Align = alClient
+    Top = 64
+    Width = 639
+    Height = 352
+    Align = alBottom
     Bitmap.ResamplerClassName = 'TNearestResampler'
     BitmapAlign = baTopLeft
     Scale = 1.000000000000000000
@@ -27,5 +27,14 @@ object Form1: TForm1
     TabOrder = 0
     OnMouseDown = imageMouseDown
     OnMouseMove = imageMouseMove
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 16
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 1
+    OnClick = Button1Click
   end
 end

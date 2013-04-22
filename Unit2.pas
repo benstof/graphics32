@@ -19,6 +19,7 @@ type
 
   TForm1 = class(TForm)
     image: TImage32;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure PaintSimpleDrawingHandler(Sender: TObject; Buffer: TBitmap32);
@@ -26,6 +27,7 @@ type
       Layer: TCustomLayer);
     procedure imageMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer; Layer: TCustomLayer);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     Polygon1: TPolygon32;
@@ -68,6 +70,36 @@ uses
 procedure TForm1.SetSelection(Value: TPositionedLayer);
 begin
 
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  B: TBitmap32;
+  W, H: Integer;
+begin
+  { deselect everything }
+  Selection := nil;
+  W := image.Bitmap.Width;
+  H := image.Bitmap.Height;
+
+  { Create a new bitmap to store a flattened image }
+  B := TBitmap32.Create;
+  try
+    B.SetSize(W, H);
+    image.PaintTo(B, Rect(0, 0, W, H));
+
+    { destroy all the layers of the original image... }
+    image.Layers.Delete(0);//.Clear;
+    //RBLayer := nil; // note that RBLayer reference is destroyed here as well.
+                    // The rubber band will be recreated during the next
+                    // SetSelection call. Alternatively, you can delete
+                    // all the layers except the rubber band.
+
+    { ...and overwrite it with the flattened one }
+    image.Bitmap := B;
+  finally
+    B.Free;
+  end;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
