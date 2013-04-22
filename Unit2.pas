@@ -95,16 +95,20 @@ begin
       Cx := Left + W2;
       Cy := Top + H2;
 
-      Buffer.PenColor := clRed32;
+      Buffer.PenColor := clgreen32;
 
-      for I := 0 to 100000 do
+     // from_x:=X;
+     // from_y:=y;
+
+      for I := 0 to 10 do
       begin
-         Buffer.MoveToF(i+1,10);
-         Buffer.LineToFS(i+1, cy);
+         Buffer.PenColor:=clgreen32+i*200;
+         Buffer.MoveToF(i+1+from_x,from_y-100);
+         Buffer.LineToFS(i+1+from_x, 100+from_y);
       end;
 
 
-      {if length(nl.points) > 0 then
+    {  if length(nl.points) > 0 then
       begin
 
          len := length(nl.points) - 1;
@@ -123,9 +127,10 @@ begin
   // Background Layer
   if TPositionedLayer(Sender).tag = 0 then
   begin
-
+      Buffer.PenColor := clred32;
       for I := 0 to 9999 do
       begin
+         Buffer.PenColor := clred32+i;
          Buffer.MoveToF(rand[i].x,rand[i].y);
          Buffer.LineToFS(rand[i+1].x,rand[i+1].y);
       end;
@@ -156,8 +161,8 @@ begin
 
       for I := 0 to 9999 do
       begin
-         rn := Random(10000);
-         rnn := Random(10000);
+         rn := Random(800);
+         rnn := Random(800);
          rand[i].X := rnn;
          rand[i].y := rn;
 
@@ -175,6 +180,16 @@ begin
   with Image.GetViewportRect do
     P := Image.ControlToBitmap(GR32.Point((Right + Left) div 2, (Top + Bottom) div 2));
 
+      B := TPositionedLayer.Create(Image.Layers);
+  B.Location := FloatRect(Image.GetViewportRect);
+  B.Scaled := True;
+  B.MouseEvents := True;
+  //L.OnMouseDown := LayerMouseDown;
+
+  B.OnPaint := PaintSimpleDrawingHandler;
+  B.Tag := 0;
+  B.Update;
+
   L := TPositionedLayer.Create(Image.Layers);
   L.Location := FloatRect(P.X - 32, P.Y - 32, P.X + 32, P.Y + 32);
   L.Scaled := True;
@@ -185,15 +200,7 @@ begin
   L.Tag := 1;
   //Selection := L;
 
-  B := TPositionedLayer.Create(Image.Layers);
-  B.Location := FloatRect(Image.GetViewportRect);
-  B.Scaled := True;
-  B.MouseEvents := True;
-  //L.OnMouseDown := LayerMouseDown;
 
-  B.OnPaint := PaintSimpleDrawingHandler;
-  B.Tag := 0;
-  B.Update;
 
 end;
 
@@ -209,6 +216,10 @@ begin
    nl.points[len].x := x;
    nl.points[len].y := y;
 
+   nl.points[0].x := x;
+   nl.points[0].y := y;
+
+
 end;
 
 procedure TForm1.imageMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -216,6 +227,9 @@ procedure TForm1.imageMouseMove(Sender: TObject; Shift: TShiftState; X,
 begin
 
      L.Location := FloatRect(x - 32,y -32,x+32,y+32);
+
+     from_x:=x;
+     from_y:=y;
 
 end;
 
