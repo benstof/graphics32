@@ -44,6 +44,7 @@ type
 var
   Form1: TForm1;
   nl : Line;
+  rand : array[0..10000] of tpoint;
 
 implementation
 
@@ -79,7 +80,7 @@ procedure TForm1.PaintSimpleDrawingHandler(Sender: TObject; Buffer: TBitmap32);
 var
   Cx, Cy: Single;
   W2, H2: Single;
-  I, j, len: Integer;
+  I, j, len, rn, rnn : Integer;
 begin
 
  // if Sender is TPositionedLayer then
@@ -96,7 +97,14 @@ begin
 
       Buffer.PenColor := clRed32;
 
-      if length(nl.points) > 0 then
+      for I := 0 to 100000 do
+      begin
+         Buffer.MoveToF(i+1,10);
+         Buffer.LineToFS(i+1, cy);
+      end;
+
+
+      {if length(nl.points) > 0 then
       begin
 
          len := length(nl.points) - 1;
@@ -107,7 +115,7 @@ begin
          Buffer.MoveToF(from_x,from_y);
          Buffer.LineToFS(Cx, Cy);
 
-      end;
+      end;}
 
      end;
   end;
@@ -116,8 +124,14 @@ begin
   if TPositionedLayer(Sender).tag = 0 then
   begin
 
+      for I := 0 to 9999 do
+      begin
+         Buffer.MoveToF(rand[i].x,rand[i].y);
+         Buffer.LineToFS(rand[i+1].x,rand[i+1].y);
+      end;
+
       // Teken al die lyne
-      if length(nl.points) > 1 then
+      {if length(nl.points) > 1 then
       begin
 
          for I := 0 to length(nl.points) - 2 do
@@ -126,7 +140,7 @@ begin
             Buffer.LineToFS(nl.points[i+1].x,nl.points[i+1].y);
          end;
 
-      end;
+      end; }
 
   end;
 
@@ -136,8 +150,23 @@ procedure TForm1.FormCreate(Sender: TObject);
 var points : TArrayofFixedPoint;
 p1, p2 : TFixedPoint;
 P: TPoint;
+rn, rnn,i : integer;
 
 begin
+
+      for I := 0 to 9999 do
+      begin
+         rn := Random(10000);
+         rnn := Random(10000);
+         rand[i].X := rnn;
+         rand[i].y := rn;
+
+         rand[i+1].X := rnn;
+         rand[i+1].y := rn;
+
+        // Buffer.MoveToF(rnn,rn);
+        // Buffer.LineToFS(rn, rnn);
+      end;
 
    Image.SetupBitmap;
    Image.Bitmap.Clear(clWhite32);

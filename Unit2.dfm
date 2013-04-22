@@ -27,9 +27,5 @@ object Form1: TForm1
     TabOrder = 0
     OnMouseDown = imageMouseDown
     OnMouseMove = imageMouseMove
-    ExplicitLeft = 8
-    ExplicitTop = 32
-    ExplicitWidth = 617
-    ExplicitHeight = 369
   end
 end
