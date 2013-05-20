@@ -113,35 +113,19 @@ object Form1: TForm1
         Height = 323
         AllowFloating = True
         AutoHide = False
-        Caption = 'dxDockPanel2'
+        Caption = 'Reports'
         ExplicitWidth = 441
         ExplicitHeight = 116
         DockingType = 0
         OriginalWidth = 441
         OriginalHeight = 140
-        object browser: TWebBrowser
-          Left = 98
-          Top = 0
-          Width = 660
-          Height = 323
-          Align = alClient
-          TabOrder = 0
-          ExplicitLeft = 104
-          ExplicitWidth = 654
-          ControlData = {
-            4C000000DF3F00002D2100000000000000000000000000000000000000000000
-            000000004C000000000000000000000001000000E0D057007335CF11AE690800
-            2B2E126208000000000000004C0000000114020000000000C000000000000046
-            8000000000000000000000000000000000000000000000000000000000000000
-            00000000000000000100000000000000000000000000000000000000}
-        end
         object Panel1: TPanel
           Left = 0
           Top = 0
           Width = 98
           Height = 323
           Align = alLeft
-          TabOrder = 1
+          TabOrder = 0
           object Button5: TButton
             Left = 0
             Top = 0
@@ -168,6 +152,36 @@ object Form1: TForm1
             Caption = 'Nodes Report'
             TabOrder = 2
             OnClick = Button5Click
+          end
+        end
+        object ScrollBox1: TScrollBox
+          Left = 98
+          Top = 0
+          Width = 660
+          Height = 323
+          Align = alClient
+          TabOrder = 1
+          ExplicitLeft = 296
+          ExplicitTop = 72
+          ExplicitWidth = 281
+          ExplicitHeight = 137
+          object browser: TWebBrowser
+            Left = 0
+            Top = 0
+            Width = 656
+            Height = 319
+            Align = alClient
+            TabOrder = 0
+            ExplicitLeft = 146
+            ExplicitTop = 20
+            ExplicitWidth = 539
+            ExplicitHeight = 323
+            ControlData = {
+              4C000000DF3F00002D2100000000000000000000000000000000000000000000
+              000000004C000000000000000000000001000000E0D057007335CF11AE690800
+              2B2E126208000000000000004C0000000114020000000000C000000000000046
+              8000000000000000000000000000000000000000000000000000000000000000
+              00000000000000000100000000000000000000000000000000000000}
           end
         end
       end

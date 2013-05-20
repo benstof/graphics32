@@ -32,14 +32,11 @@ HTMLStr: AnsiString =
 '<body  scroll=no onload="" style="color:#000; font-family:arial; background-color:#fff; padding:0px; margin:0px; border:0; "> '+
 
 '<table border="0" bordercolor="#fff" style="background-color:#FFF" width="100%" cellpadding="3" cellspacing="3">      '+
-'	<tr>' +
-'		<td><b>Irrigation Filename:<b></td>  '+
-'	</tr>                              '+
 '	<tr>                                 '+
-'		<td><b>List of Nodes & Pipes</b></td>                '+
+'		<td colspan="2"><h2>List of Nodes & Pipes</h2></td>                '+
 '	</tr>                                 '+
 '	<tr>                                   '+
-'		<td><b>Date</b>: 20/5/2013    <b>Time:</b> 14:13</td>                   '+
+'		<td><b>Date</b>: 20/5/2013</td><td> <b>Time:</b> 14:13</td>                   '+
 '	</tr>                                    '+
 '	<tr>                                     '+
 '		<td>Materials for BLOCK # 0</td>                    '+
@@ -52,14 +49,20 @@ HTMLStr: AnsiString =
 '		<td><b>Summary of total nodes</b> </td>                    '+
 '	</tr>                                    '+
 '	<tr>                                     '+
-'		<td>HYDRO PC 16MM X 2.2L/H X 0.6M Nozzle     #       8</td>                     '+
-'	</tr>                                    '+
+'		<td>HYDRO PC 16MM X 2.2L/H X 0.6M Nozzle     #       8<br/></td>                     '+
+'	</tr>  '+
+'	<tr>                                    '+
+'<td></td>' +
+'	</tr>  '+
 '	<tr>                                     '+
 '		<td><b>Detail of node sizes with OD pipe sizes</b></td>                    '+
 '	</tr>                                    '+
 '	<tr>                                     '+
-'		<td>HYDRO PC 16MM X 2.2L/H X 0.6M Nozzle     #      8 > </td>                    '+
+'		<td>HYDRO PC 16MM X 2.2L/H X 0.6M Nozzle     #      8 <br/> </td>                    '+
 '	</tr>                                    '+
+'	<tr>                                    '+
+'<td></td>' +
+'	</tr>  '+
 '	<tr>                                     '+
 '		<td>PIPES                                          OD           Total length m</td>                    '+
 '	</tr>                                    '+
@@ -95,7 +98,6 @@ type
     dxDockPanel1: TdxDockPanel;
     dxDockPanel2: TdxDockPanel;
     dxTabContainerDockSite1: TdxTabContainerDockSite;
-    browser: TWebBrowser;
     image: TImage32;
     Button1: TButton;
     Button2: TButton;
@@ -106,6 +108,8 @@ type
     Button5: TButton;
     Button6: TButton;
     Button7: TButton;
+    ScrollBox1: TScrollBox;
+    browser: TWebBrowser;
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure PaintSimpleDrawingHandler(Sender: TObject; Buffer: TBitmap32);
