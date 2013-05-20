@@ -19,6 +19,14 @@ const
 HTMLStr: AnsiString =
 '<html> '+
 '<head> '+
+'<script type="text/javascript"> '+
+'  function setText(title, text) { '+
+
+
+'}'+
+
+'</script>'+
+
 '</head> '+
 ''+
 '<body  scroll=no onload="" style="color:#000; font-family:arial; background-color:#fff; padding:0px; margin:0px; border:0; "> '+
@@ -96,6 +104,8 @@ type
     dxLayoutDockSite1: TdxLayoutDockSite;
     Panel1: TPanel;
     Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure PaintSimpleDrawingHandler(Sender: TObject; Buffer: TBitmap32);

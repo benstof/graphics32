@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -142,12 +143,30 @@ object Form1: TForm1
           Align = alLeft
           TabOrder = 1
           object Button5: TButton
-            Left = 8
-            Top = 64
-            Width = 75
-            Height = 65
-            Caption = 'New Report'
+            Left = 0
+            Top = 0
+            Width = 97
+            Height = 33
+            Caption = 'Pivots Report'
             TabOrder = 0
+            OnClick = Button5Click
+          end
+          object Button6: TButton
+            Left = 0
+            Top = 32
+            Width = 97
+            Height = 33
+            Caption = 'Pipes Report'
+            TabOrder = 1
+            OnClick = Button5Click
+          end
+          object Button7: TButton
+            Left = 0
+            Top = 64
+            Width = 97
+            Height = 33
+            Caption = 'Nodes Report'
+            TabOrder = 2
             OnClick = Button5Click
           end
         end
