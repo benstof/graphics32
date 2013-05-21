@@ -26,7 +26,6 @@ object Form1: TForm1
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    ExplicitWidth = 724
   end
   object dxRibbon1: TdxRibbon
     Left = 0
@@ -39,7 +38,6 @@ object Form1: TForm1
     Contexts = <>
     TabOrder = 3
     TabStop = False
-    ExplicitWidth = 724
     object dxRibbon1Tab1: TdxRibbonTab
       Active = True
       Caption = 'Irrigation'
@@ -51,7 +49,7 @@ object Form1: TForm1
           ToolbarName = 'dxBarManager1Bar2'
         end
         item
-          ToolbarName = 'dxBarManager1Bar3'
+          ToolbarName = 'dxBarManager1Bar4'
         end>
       Index = 0
     end
@@ -79,10 +77,6 @@ object Form1: TForm1
     Width = 762
     Height = 371
     Align = alClient
-    ExplicitLeft = 55
-    ExplicitTop = 123
-    ExplicitWidth = 666
-    ExplicitHeight = 359
     DockingType = 5
     OriginalWidth = 762
     OriginalHeight = 371
@@ -114,8 +108,6 @@ object Form1: TForm1
         AllowFloating = True
         AutoHide = False
         Caption = 'Reports'
-        ExplicitWidth = 441
-        ExplicitHeight = 116
         DockingType = 0
         OriginalWidth = 441
         OriginalHeight = 140
@@ -142,7 +134,7 @@ object Form1: TForm1
             Height = 33
             Caption = 'Pipes Report'
             TabOrder = 1
-            OnClick = Button5Click
+            OnClick = Button6Click
           end
           object Button7: TButton
             Left = 0
@@ -151,7 +143,7 @@ object Form1: TForm1
             Height = 33
             Caption = 'Nodes Report'
             TabOrder = 2
-            OnClick = Button5Click
+            OnClick = Button7Click
           end
         end
         object ScrollBox1: TScrollBox
@@ -161,10 +153,6 @@ object Form1: TForm1
           Height = 323
           Align = alClient
           TabOrder = 1
-          ExplicitLeft = 296
-          ExplicitTop = 72
-          ExplicitWidth = 281
-          ExplicitHeight = 137
           object browser: TWebBrowser
             Left = 0
             Top = 0
@@ -172,12 +160,10 @@ object Form1: TForm1
             Height = 319
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 146
-            ExplicitTop = 20
-            ExplicitWidth = 539
-            ExplicitHeight = 323
+            ExplicitWidth = 618
+            ExplicitHeight = 321
             ControlData = {
-              4C000000DF3F00002D2100000000000000000000000000000000000000000000
+              4C000000CD430000F82000000000000000000000000000000000000000000000
               000000004C000000000000000000000001000000E0D057007335CF11AE690800
               2B2E126208000000000000004C0000000114020000000000C000000000000046
               8000000000000000000000000000000000000000000000000000000000000000
@@ -193,8 +179,6 @@ object Form1: TForm1
         AllowFloating = True
         AutoHide = False
         Caption = 'dxDockPanel1'
-        ExplicitWidth = 441
-        ExplicitHeight = 116
         DockingType = 0
         OriginalWidth = 441
         OriginalHeight = 140
@@ -271,8 +255,8 @@ object Form1: TForm1
       True)
     PopupMenuLinks = <>
     UseSystemFont = True
-    Left = 8
-    Top = 136
+    Left = 24
+    Top = 168
     DockControlHeights = (
       0
       0
@@ -296,8 +280,8 @@ object Form1: TForm1
           Visible = True
           ItemName = 'dxBarButton1'
         end>
-      OneOnRow = False
-      Row = 0
+      OneOnRow = True
+      Row = 2
       UseOwnFont = False
       Visible = True
       WholeRow = False
@@ -320,8 +304,8 @@ object Form1: TForm1
           Visible = True
           ItemName = 'dxBarButton1'
         end>
-      OneOnRow = False
-      Row = 0
+      OneOnRow = True
+      Row = 3
       UseOwnFont = False
       Visible = True
       WholeRow = False
@@ -329,12 +313,14 @@ object Form1: TForm1
     object dxBarManager1Bar3: TdxBar
       Caption = 'Pivots'
       CaptionButtons = <>
+      DockedDockingStyle = dsNone
       DockedLeft = 96
       DockedTop = 0
+      DockingStyle = dsNone
       FloatLeft = 750
       FloatTop = 8
-      FloatClientWidth = 0
-      FloatClientHeight = 0
+      FloatClientWidth = 51
+      FloatClientHeight = 44
       ItemLinks = <
         item
           Visible = True
@@ -344,7 +330,23 @@ object Form1: TForm1
           Visible = True
           ItemName = 'dxBarButton1'
         end>
-      OneOnRow = False
+      OneOnRow = True
+      Row = 1
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar4: TdxBar
+      Caption = 'Custom 1'
+      CaptionButtons = <>
+      DockedLeft = 96
+      DockedTop = 0
+      FloatLeft = 788
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <>
+      OneOnRow = True
       Row = 0
       UseOwnFont = False
       Visible = True

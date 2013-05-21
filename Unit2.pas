@@ -11,7 +11,7 @@ uses
   dxBar, dxRibbonGallery, dxRibbonBackstageView, dxRibbonMiniToolbar,
   dxStatusBar, dxRibbonStatusBar, Vcl.ButtonGroup, Vcl.ToolWin, Vcl.ActnMan,
   Vcl.ActnCtrls, MSHTML,Vcl.Ribbon, ActiveX, Vcl.RibbonLunaStyleActnCtrls, Vcl.OleCtrls, SHDocVw,
-  cxPC, dxDockControl, dxDockPanel, Vcl.ExtCtrls;
+  cxPC, dxDockControl, dxDockPanel, Vcl.ExtCtrls	;
 
 
 const
@@ -19,9 +19,12 @@ const
 HTMLStr: AnsiString =
 '<html> '+
 '<head> '+
+'<script src="http://www.google.com/jsapi" type="text/javascript"></script> '+
+'<script type="text/javascript">google.load("jquery", "1.3.2");</script>  '+
 '<script type="text/javascript"> '+
 '  function setText(title, text) { '+
 
+' $("body").html(title); '+
 
 '}'+
 
@@ -30,43 +33,6 @@ HTMLStr: AnsiString =
 '</head> '+
 ''+
 '<body  scroll=no onload="" style="color:#000; font-family:arial; background-color:#fff; padding:0px; margin:0px; border:0; "> '+
-
-'<table border="0" bordercolor="#fff" style="background-color:#FFF" width="100%" cellpadding="3" cellspacing="3">      '+
-'	<tr>                                 '+
-'		<td colspan="2"><h2>List of Nodes & Pipes</h2></td>                '+
-'	</tr>                                 '+
-'	<tr>                                   '+
-'		<td><b>Date</b>: 20/5/2013</td><td> <b>Time:</b> 14:13</td>                   '+
-'	</tr>                                    '+
-'	<tr>                                     '+
-'		<td>Materials for BLOCK # 0</td>                    '+
-'	</tr>                                    '+
-'	<tr>                                     '+
-'		<td>Please note, information regarding the block valves are shown in the mainline'+
- 'and also repeated in the individual blocks.</td>                    '+
-'	</tr>                                    '+
-'	<tr>                                     '+
-'		<td><b>Summary of total nodes</b> </td>                    '+
-'	</tr>                                    '+
-'	<tr>                                     '+
-'		<td>HYDRO PC 16MM X 2.2L/H X 0.6M Nozzle     #       8<br/></td>                     '+
-'	</tr>  '+
-'	<tr>                                    '+
-'<td></td>' +
-'	</tr>  '+
-'	<tr>                                     '+
-'		<td><b>Detail of node sizes with OD pipe sizes</b></td>                    '+
-'	</tr>                                    '+
-'	<tr>                                     '+
-'		<td>HYDRO PC 16MM X 2.2L/H X 0.6M Nozzle     #      8 <br/> </td>                    '+
-'	</tr>                                    '+
-'	<tr>                                    '+
-'<td></td>' +
-'	</tr>  '+
-'	<tr>                                     '+
-'		<td>PIPES                                          OD           Total length m</td>                    '+
-'	</tr>                                    '+
-'</table> '+
 
 '</body> '+
 '</html> ';
@@ -110,6 +76,7 @@ type
     Button7: TButton;
     ScrollBox1: TScrollBox;
     browser: TWebBrowser;
+    dxBarManager1Bar4: TdxBar;
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure PaintSimpleDrawingHandler(Sender: TObject; Buffer: TBitmap32);
@@ -120,6 +87,8 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
   private
     { Private declarations }
     Polygon1: TPolygon32;
@@ -151,6 +120,7 @@ implementation
 {$ENDIF}
 
 uses
+
 
 {$IFDEF Darwin}
   MacOSAll,
@@ -243,11 +213,92 @@ begin
 
 end;
 
+
+procedure CallFoo(S: string; I: Integer);
+  { Calls JavaScript foo() function }
+var
+  Doc: IHTMLDocument2;      // current HTML document
+  HTMLWindow: IHTMLWindow2; // parent window of current HTML document
+  JSFn: string;             // stores JavaScipt function call
+begin
+  // Get reference to current document
+  Doc := Form1.Browser.Document as IHTMLDocument2;
+  if not Assigned(Doc) then
+    Exit;
+  // Get parent window of current document
+  HTMLWindow := Doc.parentWindow;
+  if not Assigned(HTMLWindow) then
+    Exit;
+  // Run JavaScript
+  try
+    JSFn := Format('setText("%s",%d)', [S, I]);  // build function call
+    HTMLWindow.execScript(JSFn, 'JavaScript'); // execute function
+  except
+    // handle exception in case JavaScript fails to run
+  end;
+end;
+
 procedure TForm1.Button5Click(Sender: TObject);
+var report : string;
+x : integer;
 begin
 
-   //opopo
+   report := '<table><tr><td><h2 id=title>List of Pivots</h2></td></tr>';
+   report := report + '<tr><td><b>Date</b>: 20/5/2013</td><td> <b>Time:</b> 14:13</td></tr>';
+   report := report + '<tr><td><b>Summary of total nodes</b> </td></tr>';
 
+   for x := 0  to 10 do
+   begin
+      report := report + '<tr>';
+      report := report + '<td>Pivot #'+inttostr(x)+'<br/></td>';
+      report := report + '</tr>';
+   end;
+   report := report + '</table> ';
+
+
+   CallFoo(report,2);
+end;
+
+procedure TForm1.Button6Click(Sender: TObject);
+var report : string;
+x : integer;
+begin
+
+   report := '<table><tr><td><h2 id=title>List of Pipes</h2></td></tr>';
+   report := report + '<tr><td><b>Date</b>: 20/5/2013</td><td> <b>Time:</b> 14:13</td></tr>';
+   report := report + '<tr><td><b>Summary of total nodes</b> </td></tr>';
+
+   for x := 0  to 10 do
+   begin
+      report := report + '<tr>';
+      report := report + '<td>Pipe #'+inttostr(x)+'<br/></td>';
+      report := report + '</tr>';
+   end;
+   report := report + '</table> ';
+
+
+   CallFoo(report,2);
+end;
+
+procedure TForm1.Button7Click(Sender: TObject);
+var report : string;
+x : integer;
+begin
+
+   report := '<table><tr><td><h2 id=title>List of Nodes</h2></td></tr>';
+   report := report + '<tr><td><b>Date</b>: 20/5/2013</td><td> <b>Time:</b> 14:13</td></tr>';
+   report := report + '<tr><td><b>Summary of total nodes</b> </td></tr>';
+
+   for x := 0  to 10 do
+   begin
+      report := report + '<tr>';
+      report := report + '<td>Node #'+inttostr(x)+'<br/></td>';
+      report := report + '</tr>';
+   end;
+   report := report + '</table> ';
+
+
+   CallFoo(report,2);
 end;
 
 procedure TForm1.PaintSimpleDrawingHandler(Sender: TObject; Buffer: TBitmap32);
@@ -331,10 +382,19 @@ p1, p2 : TFixedPoint;
 P: TPoint;
 rn, rnn,i : integer;
 
-var
    aStream     : TMemoryStream;
+   exePath, htmPath : string;
+
+const
+ LOCAL_PAGE ='C:/report.htm';
+
 begin
 
+  exePath := ExtractFilePath(Application.ExeName);
+  htmPath := exePath + 'report.html';
+
+ // browser.Navigate( 'file://' + GetCurrentDir + '/report.htm' );
+  //browser.Navigate(htmPath);
 
   browser.Navigate('about:blank');
     if Assigned(browser.Document) then
@@ -354,7 +414,7 @@ begin
     end;
 
    //BarButtonItem bAdd = new BarButtonItem();
-   dxBarButton1.Name := 'bStuff';
+ //  dxBarButton1.Name := 'bStuff';
   // dxBarButton1.Content = "stuff";
   // dxBarButton1.Glyph = bmp;
 
