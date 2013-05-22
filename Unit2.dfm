@@ -280,8 +280,8 @@ object Form1: TForm1
           Visible = True
           ItemName = 'dxBarButton1'
         end>
-      OneOnRow = True
-      Row = 2
+      OneOnRow = False
+      Row = 0
       UseOwnFont = False
       Visible = True
       WholeRow = False
@@ -304,8 +304,8 @@ object Form1: TForm1
           Visible = True
           ItemName = 'dxBarButton1'
         end>
-      OneOnRow = True
-      Row = 3
+      OneOnRow = False
+      Row = 0
       UseOwnFont = False
       Visible = True
       WholeRow = False
@@ -346,7 +346,7 @@ object Form1: TForm1
       FloatClientWidth = 0
       FloatClientHeight = 0
       ItemLinks = <>
-      OneOnRow = True
+      OneOnRow = False
       Row = 0
       UseOwnFont = False
       Visible = True

@@ -17,11 +17,12 @@ uses
 const
 
 HTMLStr: AnsiString =
-'<html> '+
+'<!DOCTYPE html> '+
 '<head> '+
 '<script src="http://www.google.com/jsapi" type="text/javascript"></script> '+
 '<script type="text/javascript">google.load("jquery", "1.3.2");</script>  '+
 '<script type="text/javascript"> '+
+
 '  function setText(title, text) { '+
 
 ' $("body").html(title); '+
@@ -33,7 +34,6 @@ HTMLStr: AnsiString =
 '</head> '+
 ''+
 '<body  scroll=no onload="" style="color:#000; font-family:arial; background-color:#fff; padding:0px; margin:0px; border:0; "> '+
-
 '</body> '+
 '</html> ';
 
@@ -241,19 +241,55 @@ end;
 procedure TForm1.Button5Click(Sender: TObject);
 var report : string;
 x : integer;
+bgc : string;
 begin
 
-   report := '<table><tr><td><h2 id=title>List of Pivots</h2></td></tr>';
-   report := report + '<tr><td><b>Date</b>: 20/5/2013</td><td> <b>Time:</b> 14:13</td></tr>';
-   report := report + '<tr><td><b>Summary of total nodes</b> </td></tr>';
+  report := '<div style=''width:500px; font-family:arial; border:0px solid #000; padding : 10px; background-color:#f7f7f7;''>';
+   report := report + '<div style=''font-size:24px; font-family:arial; font-weight:bolder; color:#58595B''>List of Pivots</div>';
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''>';
+   report := report + '<span style=''font-size:14px; color:#6d6e71; font-family:arial;''>22/5/13 | 10:55am</span></div>';
 
-   for x := 0  to 10 do
+   report := report + '<div><span style=''font-size:16px; font-family:arial; color:#58595B''>Materials for Block</span></div>';
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; color:#6d6e71;  padding-bottom:20px;''>';
+   report := report + '<span style=''font-size:11px; font-family:arial;''>Please note information regarding block valves are shown in the mainline and also repeated in the individual blocsk.</span></div>';
+
+   report := report + '<div style=''margin-bottom:20px;''><span style=''font-size:16px;  font-weight:bold; font-family:arial;  color:#58595B''>Summary of total Nodes</span></div>';
+
+   for x := 1  to 3 do
    begin
-      report := report + '<tr>';
-      report := report + '<td>Pivot #'+inttostr(x)+'<br/></td>';
-      report := report + '</tr>';
+
+      if x mod 2 = 0 then bgc := 'f1f2f2' else bgc := 'e6e7e8';
+
+      report := report + '<div style=''background-color:#'+bgc+'; color:#6d6e71; padding: 5px; font-size:14px;''><span style=''float:left;margin-right:250px;''>Spillhouse 80/20 55Kw Pump</span>';
+      report := report + '<span style=''float:rght; font-weight:bold; margin-right:15px;''>'+inttostr(x)+'</span>';
+      report := report + '</div>';
+
    end;
-   report := report + '</table> ';
+
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''><span style=''font-size:11px; font-family:arial;''></span></div>';
+
+
+   report := report + '<div style=''margin-bottom:20px;''><span style=''font-size:16px;  font-weight:bold; font-family:arial;  color:#58595B''>Detail of node sizes with OD pipe sizes</span></div>';
+
+   for x := 1  to 3 do
+   begin
+
+      if x mod 2 = 0 then bgc := 'f1f2f2' else bgc := 'e6e7e8';
+
+      report := report + '<div style=''background-color:#'+bgc+'; color:#6d6e71; padding: 5px; font-size:14px;''><span style=''float:left;margin-right:250px;''>Spillhouse 80/20 55Kw Pump</span>';
+      report := report + '<span style=''float:rght; font-weight:bold; margin-right:15px;''>'+inttostr(x)+'</span>';
+      report := report + '</div>';
+
+   end;
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''><span style=''font-size:11px; font-family:arial;''></span></div>';
+
+
+   report := report + '<div style=''margin-bottom:20px; padding-bottom:20px;''>';
+
+   report := report + '<span style=''font-size:11px; float:left; font-family:arial; border-bottom:0px dashed #c6c6c6; margin-right:10px; margin-top:11px; width:78%;''></span><span style=''font-size:20px; font-weight:bold; color:#58595B;''>Total: 26</span>';
+
+   report := report + '</div></div>';
+
 
 
    CallFoo(report,2);
@@ -262,19 +298,54 @@ end;
 procedure TForm1.Button6Click(Sender: TObject);
 var report : string;
 x : integer;
+bgc : string;
 begin
+report := '<div style=''width:500px; font-family:arial; border:0px solid #000; padding : 10px; background-color:#f7f7f7;''>';
+   report := report + '<div style=''font-size:24px; font-family:arial; font-weight:bolder; color:#58595B''>List of Pipes</div>';
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''>';
+   report := report + '<span style=''font-size:14px; color:#6d6e71; font-family:arial;''>22/5/13 | 10:55am</span></div>';
 
-   report := '<table><tr><td><h2 id=title>List of Pipes</h2></td></tr>';
-   report := report + '<tr><td><b>Date</b>: 20/5/2013</td><td> <b>Time:</b> 14:13</td></tr>';
-   report := report + '<tr><td><b>Summary of total nodes</b> </td></tr>';
+   report := report + '<div><span style=''font-size:16px; font-family:arial; color:#58595B''>Materials for Block</span></div>';
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; color:#6d6e71;  padding-bottom:20px;''>';
+   report := report + '<span style=''font-size:11px; font-family:arial;''>Please note information regarding block valves are shown in the mainline and also repeated in the individual blocsk.</span></div>';
 
-   for x := 0  to 10 do
+   report := report + '<div style=''margin-bottom:20px;''><span style=''font-size:16px;  font-weight:bold; font-family:arial;  color:#58595B''>Summary of total Nodes</span></div>';
+
+   for x := 1  to 3 do
    begin
-      report := report + '<tr>';
-      report := report + '<td>Pipe #'+inttostr(x)+'<br/></td>';
-      report := report + '</tr>';
+
+      if x mod 2 = 0 then bgc := 'f1f2f2' else bgc := 'e6e7e8';
+
+      report := report + '<div style=''background-color:#'+bgc+'; color:#6d6e71; padding: 5px; font-size:14px;''><span style=''float:left;margin-right:250px;''>Spillhouse 80/20 55Kw Pump</span>';
+      report := report + '<span style=''float:rght; font-weight:bold; margin-right:15px;''>'+inttostr(x)+'</span>';
+      report := report + '</div>';
+
    end;
-   report := report + '</table> ';
+
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''><span style=''font-size:11px; font-family:arial;''></span></div>';
+
+
+   report := report + '<div style=''margin-bottom:20px;''><span style=''font-size:16px;  font-weight:bold; font-family:arial;  color:#58595B''>Detail of node sizes with OD pipe sizes</span></div>';
+
+   for x := 1  to 3 do
+   begin
+
+      if x mod 2 = 0 then bgc := 'f1f2f2' else bgc := 'e6e7e8';
+
+      report := report + '<div style=''background-color:#'+bgc+'; color:#6d6e71; padding: 5px; font-size:14px;''><span style=''float:left;margin-right:250px;''>Spillhouse 80/20 55Kw Pump</span>';
+      report := report + '<span style=''float:rght; font-weight:bold; margin-right:15px;''>'+inttostr(x)+'</span>';
+      report := report + '</div>';
+
+   end;
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''><span style=''font-size:11px; font-family:arial;''></span></div>';
+
+
+   report := report + '<div style=''margin-bottom:20px; padding-bottom:20px;''>';
+
+   report := report + '<span style=''font-size:11px; float:left; font-family:arial; border-bottom:0px dashed #c6c6c6; margin-right:10px; margin-top:11px; width:78%;''></span><span style=''font-size:20px; font-weight:bold; color:#58595B;''>Total: 26</span>';
+
+   report := report + '</div></div>';
+
 
 
    CallFoo(report,2);
@@ -283,20 +354,54 @@ end;
 procedure TForm1.Button7Click(Sender: TObject);
 var report : string;
 x : integer;
+bgc : string;
 begin
 
-   report := '<table><tr><td><h2 id=title>List of Nodes</h2></td></tr>';
-   report := report + '<tr><td><b>Date</b>: 20/5/2013</td><td> <b>Time:</b> 14:13</td></tr>';
-   report := report + '<tr><td><b>Summary of total nodes</b> </td></tr>';
+   report := '<div style=''width:500px; font-family:arial; border:0px solid #000; padding : 10px; background-color:#f7f7f7;''>';
+   report := report + '<div style=''font-size:24px; font-family:arial; font-weight:bolder; color:#58595B''>List of Nodes and Pipes</div>';
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''>';
+   report := report + '<span style=''font-size:14px; color:#6d6e71; font-family:arial;''>22/5/13 | 10:55am</span></div>';
 
-   for x := 0  to 10 do
+   report := report + '<div><span style=''font-size:16px; font-family:arial; color:#58595B''>Materials for Block</span></div>';
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; color:#6d6e71;  padding-bottom:20px;''>';
+   report := report + '<span style=''font-size:11px; font-family:arial;''>Please note information regarding block valves are shown in the mainline and also repeated in the individual blocsk.</span></div>';
+
+   report := report + '<div style=''margin-bottom:20px;''><span style=''font-size:16px;  font-weight:bold; font-family:arial;  color:#58595B''>Summary of total Nodes</span></div>';
+
+   for x := 1  to 3 do
    begin
-      report := report + '<tr>';
-      report := report + '<td>Node #'+inttostr(x)+'<br/></td>';
-      report := report + '</tr>';
-   end;
-   report := report + '</table> ';
 
+      if x mod 2 = 0 then bgc := 'f1f2f2' else bgc := 'e6e7e8';
+
+      report := report + '<div style=''background-color:#'+bgc+'; color:#6d6e71; padding: 5px; font-size:14px;''><span style=''float:left;margin-right:250px;''>Spillhouse 80/20 55Kw Pump</span>';
+      report := report + '<span style=''float:rght; font-weight:bold; margin-right:15px;''>'+inttostr(x)+'</span>';
+      report := report + '</div>';
+
+   end;
+
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''><span style=''font-size:11px; font-family:arial;''></span></div>';
+
+
+   report := report + '<div style=''margin-bottom:20px;''><span style=''font-size:16px;  font-weight:bold; font-family:arial;  color:#58595B''>Detail of node sizes with OD pipe sizes</span></div>';
+
+   for x := 1  to 3 do
+   begin
+
+      if x mod 2 = 0 then bgc := 'f1f2f2' else bgc := 'e6e7e8';
+
+      report := report + '<div style=''background-color:#'+bgc+'; color:#6d6e71; padding: 5px; font-size:14px;''><span style=''float:left;margin-right:250px;''>Spillhouse 80/20 55Kw Pump</span>';
+      report := report + '<span style=''float:rght; font-weight:bold; margin-right:15px;''>'+inttostr(x)+'</span>';
+      report := report + '</div>';
+
+   end;
+   report := report + '<div style=''border-bottom:1px dashed #c6c6c6; margin-bottom:20px; padding-bottom:20px;''><span style=''font-size:11px; font-family:arial;''></span></div>';
+
+
+   report := report + '<div style=''margin-bottom:20px; padding-bottom:20px;''>';
+
+   report := report + '<span style=''font-size:11px; float:left; font-family:arial; border-bottom:0px dashed #c6c6c6; margin-right:10px; margin-top:11px; width:78%;''></span><span style=''font-size:20px; font-weight:bold; color:#58595B;''>Total: 26</span>';
+
+   report := report + '</div></div>';
 
    CallFoo(report,2);
 end;
